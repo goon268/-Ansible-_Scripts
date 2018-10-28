@@ -1,0 +1,19 @@
+Create a host/inventory file for Ansible
+
+1.  nano hosts
+
+[gns3-ios]
+S1
+S2
+S3
+S4
+
+--
+create own ansible.cfg
+
+1.  nano ansible.cfg
+
+[defaults]
+hostfile = ./hosts
+host_key_checking = false
+timeout = 5

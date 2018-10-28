@@ -1,0 +1,31 @@
+---
+- name:  Get ARP information
+  hosts:  all
+  gather_facts:  false
+  
+  tasks:
+    -  name:  show arp
+       raw:  "show arp"
+       
+       register:  print_output
+       
+     -  debug:  var=print_output.stdout_lines
+     
+     
+     
+---
+- name:  Show version and other user level command
+  hosts:  all
+  gather_facts:  false
+  connection:  local
+  tasks:
+    -  name:  run multiple commands on router and switch
+       ios_command:
+         commands:
+           -  show version
+           -  show ip int brief
+       
+       register:  print_output
+       
+    -  debug:  var=print_output.stdout_lines
+     

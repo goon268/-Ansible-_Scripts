@@ -1,0 +1,45 @@
+Ansible adhoc commands
+
+Ping
+ansible all -m ping 
+
+--
+Specifcing a host file 
+ansible all -i centos1, -m ping
+
+--
+debug module
+ansilbe all -m debug 
+(venv27) packt@ubuntu-c:~/ansible$ ansible all -m debug
+centos1 | SUCCESS => {
+    "msg": "Hello world!"
+
+--
+to view documentation
+
+ansilbe-doc ping 
+==
+(venv27) packt@ubuntu-c:~/ansible$ ansible all -m ping -o
+ubuntu2 | SUCCESS => {"changed": false, "ping": "pong"}
+ubuntu1 | SUCCESS => {"changed": false, "ping": "pong"}
+ubuntu3 | SUCCESS => {"changed": false, "ping": "pong"}
+centos1 | SUCCESS => {"changed": false, "ping": "pong"}
+centos2 | SUCCESS => {"changed": false, "ping": "pong"}
+centos3 | SUCCESS => {"changed": false, "ping": "pong"}
+==
+ansible centos --list-hosts
+(venv27) packt@ubuntu-c:~/ansible$ ansible centos --list-hosts
+  hosts (3):
+    centos1
+    centos2
+    centos3
+
+ use regex 
+ ansible ~.*3 --list-hosts
+ venv27) packt@ubuntu-c:~/ansible$ ansible ~.*3 --list-hosts
+  hosts (2):
+    ubuntu3
+    centos3
+
+    
+ 
